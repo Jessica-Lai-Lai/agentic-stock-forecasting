@@ -1,0 +1,35 @@
+{
+  "macro_reasoning": "NVDA shows a clear upward macro trend over the full period, rising from 177.81 to 208.27, with a strong rebound after a mid-period pullback. The last several weeks indicate momentum has improved again, supported by consistently bullish AI-chip and data-center news, though the pace of gains has recently slowed. Given the sharp run-up, a conservative outlook suggests modest continuation rather than another large breakout.",
+  "micro_reasoning": [
+    {
+      "week": 1,
+      "movement": "up",
+      "reason": "Momentum remains positive after the recent breakout to a new high, and AI-related news continues to support sentiment. However, gains should likely be modest as the stock may pause after a strong rally.",
+      "forecast": 210.1
+    },
+    {
+      "week": 2,
+      "movement": "up",
+      "reason": "If the broader AI and semiconductor narrative stays favorable, the stock can extend slightly higher. The move is likely gradual because investors may start taking profits near recent highs.",
+      "forecast": 211.8
+    },
+    {
+      "week": 3,
+      "movement": "up",
+      "reason": "The trend still favors incremental upside, especially if market conditions remain stable and demand expectations for Nvidia hardware stay strong. Any advance should remain measured given the stock's already elevated level.",
+      "forecast": 213.0
+    },
+    {
+      "week": 4,
+      "movement": "up",
+      "reason": "The series of higher closes suggests continued resilience, but the most realistic outcome is a slow grind higher rather than acceleration. This reflects strong fundamentals balanced against short-term cooling after a rapid rise.",
+      "forecast": 214.2
+    }
+  ],
+  "final_forecast": [
+    210.1,
+    211.8,
+    213.0,
+    214.2
+  ]
+}
