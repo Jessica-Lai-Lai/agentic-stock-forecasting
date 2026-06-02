@@ -14,16 +14,17 @@ Traditional time-series forecasting often relies mainly on historical numerical 
 
 Inspired by the Nexus framework, this project explores a simplified multimodal forecasting pipeline:
 
-\[
+
+$$
 F(X_{1:\tau}, E_{1:\tau}) \rightarrow (\hat{X}_{\tau+1:\tau+T}, R)
-\]
+$$
 
 Where:
 
-- \(X_{1:\tau}\) = historical stock prices
-- \(E_{1:\tau}\) = financial news/context headlines
-- \(\hat{X}_{\tau+1:\tau+T}\) = predicted future stock prices
-- \(R\) = natural language reasoning behind the forecast
+- $X_{1:\tau}$ = historical stock prices
+- $E_{1:\tau}$ = financial news/context headlines
+- $\hat{X}_{\tau+1:\tau+T}$  = predicted future stock prices
+- $R$  = natural language reasoning behind the forecast
 
 ---
 
@@ -46,9 +47,9 @@ as historical context, then generated a **4-week forecast** for:
 ### Evaluation Result
 
 | Metric | Value |
-|---|---:|
-| MAPE | 3.25% |
-| RMSE | 8.49 |
+|---|------:|
+| MAPE | 3.36% |
+| RMSE |  8.67 |
 
 In this short demo backtesting window, the model produced a conservative upward forecast. It broadly followed the market direction but underestimated part of the short-term price spike during the test period.
 
@@ -57,40 +58,40 @@ In this short demo backtesting window, the model produced a conservative upward 
 ## Pipeline Overview
 
 ```text
-fetch_real_data.py
+1. fetch_real_data.py
     ↓
 Collect real weekly stock prices using yfinance
 Collect financial news headlines using Finnhub API
 
-data_loader.py
+2. data_loader.py
     ↓
 Load CSV data
 Validate required columns
 Split train/test data
 
-context_agent.py
+3. context_agent.py
     ↓
 Build structured historical context
 Combine price data + news summaries
 
-forecast_agent.py
+4. forecast_agent.py
     ↓
 Use OpenAI API to generate:
 - macro reasoning
 - micro week-by-week reasoning
 - final 4-week forecast
 
-evaluation.py
+5. evaluation.py
     ↓
 Compare forecast against actual test prices
 Calculate MAPE and RMSE
 Save evaluation outputs
 
-plot_forecast.py
+6. plot_forecast.py
     ↓
 Generate Actual vs Predicted forecast visualization
 
-main.py
+7. main.py
     ↓
 Run the full pipeline
 ```
@@ -101,15 +102,15 @@ Run the full pipeline
 
 This project is inspired by the Nexus idea of combining historical numerical data with external textual context for interpretable forecasting.
 
-| Nexus Paper Component | This Project Implementation |
-|---|---|
-| Historical numerical sequence \(X_{1:\tau}\) | Weekly NVDA close prices from yfinance |
-| Textual context \(E_{1:\tau}\) | Finnhub financial news headlines |
-| Historical Context Agent | `context_agent.py` builds structured historical context |
-| Macro Reasoning | LLM explains the overall stock trend |
-| Micro Reasoning | LLM explains week-by-week expected movements |
-| Forecast Synthesis | `forecast_agent.py` outputs final forecast values |
-| Evaluation | `evaluation.py` calculates MAPE and RMSE |
+| Nexus Paper Component                      | This Project Implementation |
+|--------------------------------------------|---|
+| Historical numerical sequence $X_{1:\tau}$ | Weekly NVDA close prices from yfinance |
+| Textual context $E_{1:\tau}$               | Finnhub financial news headlines |
+| Historical Context Agent                   | `context_agent.py` builds structured historical context |
+| Macro Reasoning                            | LLM explains the overall stock trend |
+| Micro Reasoning                            | LLM explains week-by-week expected movements |
+| Forecast Synthesis                         | `forecast_agent.py` outputs final forecast values |
+| Evaluation                                 | `evaluation.py` calculates MAPE and RMSE |
 
 This project is a **simplified prototype**, not a full reproduction of the Nexus paper.  
 The full Nexus framework includes separate macro, micro, synthesizer, and calibration agents. In this demo, macro reasoning, micro reasoning, and forecast synthesis are implemented inside a lightweight LLM forecasting agent.
